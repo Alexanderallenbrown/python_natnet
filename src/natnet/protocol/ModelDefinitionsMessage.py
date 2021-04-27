@@ -228,7 +228,10 @@ class ModelDefinitionsMessage(object):
 
         definition_count = data.unpack(uint32_t)
         for i in range(definition_count):
-            models.append(_registry.deserialize(data, version))
+            try:
+                models.append(_registry.deserialize(data, version))
+            except:
+                pass
 
         return cls(models)
 
