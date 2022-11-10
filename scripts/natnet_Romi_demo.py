@@ -17,6 +17,9 @@ import natnet
 import math
 import time
 
+tnow = time.time()
+oldtime = tnow
+
 def euler_from_quaternion(x, y, z, w):
         """
         Convert a quaternion into euler angles (roll, pitch, yaw)
@@ -52,7 +55,7 @@ class ClientApp(object):
     @classmethod
     def connect(cls, server_name):
 
-        client = natnet.Client.connect(server_name,True)
+        client = natnet.Client.connect(server_name)
         if client is None:
             return None
         return cls(client)
@@ -84,7 +87,7 @@ def main():
         app.run()
         app._client.set_callback(app.callback)
         while True:
-            app._client.spin_once()
+            app._client.run_once()
             print(app.x,app.y,app.z)
 
     except natnet.DiscoveryError as e:

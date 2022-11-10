@@ -1,0 +1,3 @@
+[submodule "scripts/ES302_Romi"]
+	path = scripts/ES302_Romi
+	url = https://github.com/Alexanderallenbrown/ES302_Romi.git
